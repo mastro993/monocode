@@ -1046,7 +1046,7 @@ const ACTIVATE_RANGE_COMMAND = "Tab: Activate 1–8";
  * Every chord a command owns by default, in stored form. Grouped rows expand
  * to one chord per key so a rebind can never shadow a working shortcut.
  */
-function defaultShortcutsFor(command: string): string[] {
+export function defaultShortcutsFor(command: string): string[] {
   const row = KEYBINDINGS.find((entry) => entry.command === command);
   if (!row) return [];
   let rest = row.keys;

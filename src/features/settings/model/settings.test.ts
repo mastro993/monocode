@@ -28,6 +28,7 @@ import {
   keybindingPressed,
   matchCustomKeybinding,
   loadQuickComposerShortcut,
+  defaultShortcutsFor,
   loadTabAnimationsEnabled,
   NOTES_ENABLED_DEFAULT,
   saveComposerRunner,
@@ -268,11 +269,15 @@ describe("keybinding overrides", () => {
   });
 
   it("rejects a shortcut that shadows another command's default", () => {
+    // Read the chords from the table so the test follows the platform modifier
+    // the default actually uses instead of pinning one platform's spelling.
+    const goToFile = defaultShortcutsFor("App: Go to File")[0];
+    const cycleNext = defaultShortcutsFor("Tab: Cycle Next")[0];
     expect(() =>
-      saveKeybindingOverride("App: Search", { shortcut: "Control+KeyP" }),
+      saveKeybindingOverride("App: Search", { shortcut: goToFile }),
     ).toThrow("Already used by App: Go to File");
     expect(() =>
-      saveKeybindingOverride("Tab: New", { shortcut: "Control+Tab" }),
+      saveKeybindingOverride("Tab: New", { shortcut: cycleNext }),
     ).toThrow("Already used by Tab: Cycle Next");
   });
 
