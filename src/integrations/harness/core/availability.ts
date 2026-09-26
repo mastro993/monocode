@@ -8,7 +8,6 @@ import {
   resolveFxBinary,
   resolveGrokBinary,
   resolveHermesBinary,
-  resolveCopilotBinary,
   resolveOmpBinary,
   resolveOpenCodeBinary,
   resolvePiBinary,
@@ -51,7 +50,6 @@ const CLI: Record<HarnessId, { name: string; install?: string }> = {
     install:
       "Install from hermes-agent.nousresearch.com, then run hermes model",
   },
-  copilot: { name: "Copilot CLI", install: "npm i -g @github/copilot" },
   antigravity: { name: "Antigravity ACP server (agy_acp_server.par)" },
 };
 
@@ -149,14 +147,6 @@ export function probeHarnessAvailability(
       if (id === "hermes") {
         try {
           await resolveHermesBinary();
-          return [id, true] as const;
-        } catch {
-          return [id, false] as const;
-        }
-      }
-      if (id === "copilot") {
-        try {
-          await resolveCopilotBinary();
           return [id, true] as const;
         } catch {
           return [id, false] as const;

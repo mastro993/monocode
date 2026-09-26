@@ -25,7 +25,6 @@ export type HarnessId =
   | "omp"
   | "fx"
   | "hermes"
-  | "copilot"
   | "antigravity";
 
 export const HARNESSES: HarnessId[] = [
@@ -38,7 +37,6 @@ export const HARNESSES: HarnessId[] = [
   "omp",
   "fx",
   "hermes",
-  "copilot",
   "antigravity",
 ];
 
@@ -471,7 +469,6 @@ export const HARNESS_LABEL: Record<HarnessId, string> = {
   omp: "omp",
   fx: "fx",
   hermes: "hermes",
-  copilot: "copilot",
   antigravity: "antigravity",
 };
 
@@ -485,7 +482,6 @@ export const HARNESS_TITLE: Record<HarnessId, string> = {
   omp: "omp",
   fx: "fx",
   hermes: "Hermes Agent",
-  copilot: "GitHub Copilot",
   antigravity: "Antigravity",
 };
 
